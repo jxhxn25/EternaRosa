@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floristería Encanto - Flores Frescas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Georgia', serif;
+        }
+
+        body {
+            background-color: #fff9f9;
+            color: #4a3a3a;
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, #ffb6c1 0%, #ffc0cb 50%, #ffd1dc 100%);
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 15px rgba(255, 105, 180, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #8b3a62;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #fff;
+            background-color: #8b3a62;
+            padding: 2px 8px;
+            border-radius: 50%;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #8b3a62;
+            font-weight: bold;
+            font-size: 16px;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        /* HERO */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 60px;
+            background: linear-gradient(135deg, #fff0f5 0%, #ffe4ec 100%);
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 52px;
+            color: #8b3a62;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #6b4a5a;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff69b4, #ff85c0);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 17px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(255, 105, 180, 0.6);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            font-size: 250px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* SECCIÓN PRODUCTOS */
+        .section-title {
+            text-align: center;
+            font-size: 40px;
+            color: #8b3a62;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #a97a8c;
+            margin-bottom: 50px;
+            font-size: 17px;
+        }
+
+        .productos {
+            padding: 80px 60px;
+        }
+
+        .grid-productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 5px 25px rgba(255, 182, 193, 0.3);
+            transition: transform 0.4s, box-shadow 0.4s;
+            border: 2px solid #ffe4ec;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.35);
+        }
+
+        .card-emoji {
+            font-size: 80px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #8b3a62;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #7a5a6a;
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+
+        .precio {
+            display: block;
+            font-size: 24px;
+            color: #ff69b4;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .btn-comprar {
+            display: inline-block;
+            background-color: #fff0f5;
+            color: #8b3a62;
+            padding: 10px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px solid #ffb6c1;
+            transition: all 0.3s;
+        }
+
+        .btn-comprar:hover {
+            background-color: #ff69b4;
+            color: white;
+            border-color: #ff69b4;
+        }
+
+        /* NOSOTROS */
+        .nosotros {
+            background: linear-gradient(135deg, #ffe4ec, #fff0f5);
+            padding: 80px 60px;
+            text-align: center;
+        }
+
+        .nosotros p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 18px;
+            color: #6b4a5a;
+        }
+
+        /* CONTACTO */
+        .contacto {
+            padding: 80px 60px;
+            text-align: center;
+        }
+
+        .contacto-info {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .contacto-item {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            min-width: 220px;
+            box-shadow: 0 5px 25px rgba(255, 182, 193, 0.3);
+            border: 2px solid #ffe4ec;
+        }
+
+        .contacto-item .icon {
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+        .contacto-item h4 {
+            color: #8b3a62;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .contacto-item p {
+            color: #7a5a6a;
+            font-size: 15px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: linear-gradient(135deg, #8b3a62, #a94e77);
+            color: #ffe4ec;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 15px;
+        }
+
+        footer p {
+            margin-bottom: 5px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 20px;
+            }
+
+            nav ul {
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                flex-direction: column;
+                padding: 50px 25px;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 36px;
+            }
+
+            .hero-image {
+                font-size: 150px;
+            }
+
+            .productos, .nosotros, .contacto {
+                padding: 50px 25px;
+            }
+
+            .section-title {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <div class="logo">🌸 Floristería <span>Encanto</span></div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+        <div class="hero-text">
+            <h1>Flores que cuentan historias</h1>
+            <p>Descubre nuestra colección de ramos frescos, arreglos florales y detalles únicos para cada ocasión especial. Envío el mismo día en toda la ciudad.</p>
+            <a href="#productos" class="btn">Explorar Catálogo</a>
+        </div>
+        <div class="hero-image">💐</div>
+    </section>
+
+    <!-- PRODUCTOS -->
+    <section class="productos" id="productos">
+        <h2 class="section-title">Nuestras Flores</h2>
+        <p class="section-subtitle">Seleccionadas con amor cada mañana</p>
+
+        <div class="grid-productos">
+
+            <div class="card">
+                <div class="card-emoji">🌹</div>
+                <h3>Ramo de Rosas Rojas</h3>
+                <p>Doce rosas rojas eternas, símbolo del amor profundo.</p>
+                <span class="precio">$45.00</span>
+                <a href="#" class="btn-comprar">Comprar</a>
+            </div>
+
+            <div class="card">
+                <div class="card-emoji">🌷</div>
+                <h3>Tulipanes Holandeses</h3>
+                <p>Coloridos tulipanes importados, frescura garantizada.</p>
+                <span class="precio">$38.00</span>
+                <a href="#" class="btn-comprar">Comprar</a>
+            </div>
+
+            <div class="card">
+                <div class="card-emoji">🌻</div>
+                <h3>Girasoles Radiantes</h3>
+                <p>Llena de alegría y luz cualquier espacio con girasoles.</p>
+                <span class="precio">$32.00</span>
+                <a href="#" class="btn-comprar">Comprar</a>
+            </div>
+
+            <div class="card">
+                <div class="card-emoji">🌼</div>
+                <h3>Margaritas de Primavera</h3>
+                <p>Delicadas margaritas blancas y amarillas para alegrar tu día.</p>
+                <span class="precio">$25.00</span>
+                <a href="#" class="btn-comprar">Comprar</a>
+            </div>
+
+            <div class="card">
+                <div class="card-emoji">💐</div>
+                <h3>Ramo Mixto Premium</h3>
+                <p>Combinación de flores de temporada con envoltura artesanal.</p>
+                <span class="precio">$55.00</span>
+                <a href="#" class="btn-comprar">Comprar</a>
+            </div>
+
+            <div class="card">
+                <div class="card-emoji">🌸</div>
+                <h3>Peonías Delicadas</h3>
+                <p>Exclusivas peonías rosas, elegancia y suavidad en un ramo.</p>
+                <span class="precio">$60.00</span>
+                <a href="#" class="btn-comprar">Comprar</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- NOSOTROS -->
+    <section class="nosotros" id="nosotros">
+        <h2 class="section-title">Sobre Nosotros</h2>
+        <p>Somos una floristería familiar con más de 15 años de experiencia llevando emociones a través de las flores. Cada ramo es creado por manos expertas que aman lo que hacen, garantizando frescura, belleza y un toque único en cada arreglo. Nos enorgullece ser parte de tus momentos más especiales: cumpleaños, aniversarios, bodas o simplemente para decir "te quiero".</p>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="contacto" id="contacto">
+        <h2 class="section-title">Contáctanos</h2>
+        <p class="section-subtitle">Estamos aquí para ayudarte a elegir el ramo perfecto</p>
+
+        <div class="contacto-info">
+            <div class="contacto-item">
+                <div class="icon">📍</div>
+                <h4>Dirección</h4>
+                <p>Calle Las Flores #123<br>Centro, Ciudad</p>
+            </div>
+
+            <div class="contacto-item">
+                <div class="icon">📞</div>
+                <h4>Teléfono</h4>
+                <p>+51 999 888 777<br>Lun - Sáb 8am a 8pm</p>
+            </div>
+
+            <div class="contacto-item">
+                <div class="icon">📧</div>
+                <h4>Email</h4>
+                <p>hola@floristeriaencanto.com</p>
+            </div>
+
+            <div class="contacto-item">
+                <div class="icon">🚚</div>
+                <h4>Envíos</h4>
+                <p>Delivery el mismo día<br>en toda la ciudad</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>🌸 Floristería Encanto © 2025</p>
+        <p>Hecho con amor para regalar flores 🌷</p>
+    </footer>
+
+</body>
+</html>

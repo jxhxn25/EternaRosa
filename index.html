@@ -168,21 +168,25 @@
 
         .card-emoji {
             width: 100%;
-            height: 180px;
+            aspect-ratio: 1 / 1;         /* 👈 Contenedor cuadrado perfecto */
             display: flex;
             justify-content: center;
             align-items: center;
             margin-bottom: 15px;
             overflow: hidden;
             border-radius: 12px;
+            background-color: #fff0f5;   /* Fondo rosita por si hay bordes */
         }
-
+        
         .card-emoji img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            border-radius: 12px;
+            object-fit: cover;           /* 👈 Llena el cuadrado recortando lo justo */
             transition: transform 0.4s;
+        }
+        
+        .card:hover .card-emoji img {
+            transform: scale(1.08);
         }
 
         .card:hover .card-emoji img {

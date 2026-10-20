@@ -364,12 +364,113 @@
             letter-spacing: 1px;
         }
 
-        /* 10. RESPONSIVE */
+        /* 10. DISEÑO RESPONSIVE (CELULARES Y TABLETS) */
         @media (max-width: 768px) {
-            .top-bar { padding: 15px; flex-direction: column; gap: 15px; }
-            .nav-menu { flex-wrap: wrap; gap: 15px; padding: 15px; }
-            .card-emoji { height: 280px; }
-            .categoria-card img { height: 250px; }
+            /* Header y Menú */
+            .top-bar { 
+                flex-direction: column; 
+                padding: 15px; 
+                gap: 10px; 
+            }
+            .logo {
+                font-size: 26px;
+            }
+            .nav-menu { 
+                flex-wrap: wrap; 
+                gap: 10px 15px; 
+                padding: 10px 15px; 
+                justify-content: center;
+            }
+            .nav-menu a {
+                font-size: 11px; /* Letra más pequeña en el menú */
+            }
+            .btn-envio-hoy {
+                padding: 8px 15px;
+            }
+
+            /* Hero (Portada) */
+            #inicio {
+                height: 60vh !important; /* Más bajito para que no ocupe toda la pantalla */
+                padding: 0 20px;
+            }
+            #inicio h1 {
+                font-size: 36px !important; /* Letra más pequeña para que quepa */
+                letter-spacing: 2px;
+            }
+            #inicio p {
+                font-size: 15px !important;
+            }
+            #inicio a {
+                padding: 12px 25px !important;
+                font-size: 11px !important;
+            }
+
+            /* Títulos de secciones */
+            .section-title {
+                font-size: 26px;
+            }
+            .section-subtitle {
+                font-size: 13px;
+                padding: 0 15px;
+            }
+
+            /* Categorías */
+            .grid-categorias {
+                gap: 15px;
+            }
+            .categoria-card img {
+                height: 220px;
+            }
+            .categoria-etiqueta {
+                padding: 10px 20px;
+                font-size: 11px;
+                bottom: 20px;
+            }
+
+            /* Botones de filtro */
+            .filtros-container {
+                flex-direction: column; /* Se ponen uno debajo del otro */
+                gap: 15px;
+                padding: 0 20px;
+            }
+            .btn-bonito {
+                width: 100%; /* Ocupan todo el ancho de la pantalla */
+                padding: 12px;
+            }
+
+            /* Tarjetas de productos */
+            .grid-productos {
+                grid-template-columns: 1fr; /* Una sola columna en el celular */
+                gap: 20px;
+            }
+            .card {
+                padding: 15px;
+            }
+            .card-emoji {
+                height: 350px; /* La foto se mantiene grande y visible */
+            }
+
+            /* Contacto */
+            .contacto-info {
+                flex-direction: column;
+                gap: 20px;
+                padding: 0 20px;
+            }
+            .contacto-item {
+                width: 100%;
+                padding: 20px;
+            }
+
+            /* Modal de Yape */
+            #modal-yape > div {
+                padding: 20px !important;
+            }
+            #modal-yape h2 {
+                font-size: 20px !important;
+            }
+            #modal-yape h3 {
+                font-size: 18px !important;
+            }
         }
     </style>
 </head>

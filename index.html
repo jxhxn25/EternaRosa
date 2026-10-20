@@ -4,250 +4,294 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eterna Rosa</title>
+    <!-- Fuentes elegantes -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
     <style>
+        /* 1. CONFIGURACIÓN GENERAL */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Georgia', serif;
         }
 
         body {
-            background-color: #fff9f9;
-            color: #4a3a3a;
+            background-color: #ffffff;
+            color: #333333;
+            font-family: 'Montserrat', sans-serif;
             line-height: 1.6;
         }
 
-        /* HEADER */
-        header {
-            background: linear-gradient(135deg, #ffb6c1 0%, #ffc0cb 50%, #ffd1dc 100%);
-            padding: 20px 60px;
+        h1, h2, h3, .logo {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* 2. DESPLAZAMIENTO SUAVE */
+        html {
+            scroll-behavior: smooth;
+        }
+        section {
+            scroll-margin-top: 100px;
+        }
+
+        /* 3. HEADER Y MENÚ */
+        .top-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 15px rgba(255, 105, 180, 0.2);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            padding: 20px 40px;
+            max-width: 1400px;
+            margin: auto;
         }
 
         .logo {
-            font-size: 28px;
-            font-weight: bold;
-            color: #8b3a62;
-            letter-spacing: 1px;
-        }
-
-        .logo span {
-            color: #fff;
-            background-color: #8b3a62;
-            padding: 2px 8px;
-            border-radius: 50%;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 35px;
-        }
-
-        nav a {
+            font-size: 32px;
+            color: #3d1c2b; /* Color Borgoña elegante */
             text-decoration: none;
-            color: #8b3a62;
-            font-weight: bold;
-            font-size: 16px;
-            transition: color 0.3s, transform 0.3s;
-            display: inline-block;
+            letter-spacing: 3px;
         }
 
-        nav a:hover {
-            color: #fff;
-            transform: translateY(-3px);
-        }
-
-        /* HERO */
-        .hero {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 80px 60px;
-            background: linear-gradient(135deg, #fff0f5 0%, #ffe4ec 100%);
-            gap: 40px;
-        }
-
-        .hero-text {
-            flex: 1;
-        }
-
-        .hero-text h1 {
-            font-size: 52px;
-            color: #8b3a62;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .hero-text p {
-            font-size: 18px;
-            margin-bottom: 30px;
-            color: #6b4a5a;
-        }
-
-        .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #ff69b4, #ff85c0);
-            color: white;
-            padding: 15px 40px;
-            text-decoration: none;
-            border-radius: 30px;
-            font-size: 17px;
-            font-weight: bold;
-            letter-spacing: 1px;
-            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(255, 105, 180, 0.6);
-        }
-
-        .hero-image {
-            flex: 1;
+        .nav-menu {
             display: flex;
             justify-content: center;
-            font-size: 250px;
-            animation: float 4s ease-in-out infinite;
+            list-style: none;
+            gap: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding-bottom: 20px;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+        .nav-menu a {
+            color: #3d1c2b;
+            text-decoration: none;
+            transition: color 0.3s;
         }
 
-        /* SECCIÓN PRODUCTOS */
+        .nav-menu a:hover {
+            color: #d15878;
+        }
+
+        .btn-envio-hoy {
+            background: #d15878; /* Rosa elegante */
+            color: white !important;
+            padding: 10px 20px;
+            transition: 0.3s;
+        }
+
+        .btn-envio-hoy:hover {
+            background: #b44663 !important;
+        }
+
+        .barra-negra {
+            background-color: #3d1c2b; /* Borgoña en vez de negro */
+            color: #fff;
+            text-align: center;
+            padding: 12px;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .barra-negra a {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        /* 4. CATEGORÍAS */
+        .categorias-container {
+            padding: 80px 20px;
+            max-width: 1400px;
+            margin: auto;
+        }
+
+        .grid-categorias {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .categoria-card {
+            text-decoration: none;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .categoria-card img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .categoria-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .categoria-etiqueta {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 12px 30px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #3d1c2b;
+            white-space: nowrap;
+        }
+
+        /* 5. SECCIÓN DE PRODUCTOS Y TÍTULOS */
+        .productos {
+            padding: 60px 20px;
+            max-width: 1400px;
+            margin: auto;
+        }
+
         .section-title {
             text-align: center;
-            font-size: 40px;
-            color: #8b3a62;
-            margin-bottom: 15px;
+            font-size: 32px;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            color: #3d1c2b;
         }
 
         .section-subtitle {
             text-align: center;
-            color: #a97a8c;
-            margin-bottom: 50px;
-            font-size: 17px;
+            color: #7a5a6a;
+            margin-bottom: 40px;
+            font-size: 15px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .productos {
-            padding: 80px 60px;
+        /* 6. BOTONES DE FILTRO (VER FLORES) */
+        .filtros-container {
+            text-align: center;
+            margin: 30px 0 50px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
+        .btn-bonito {
+            display: inline-block;
+            background: #3d1c2b;
+            color: white;
+            padding: 15px 35px;
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-bonito:hover {
+            background: #d15878; /* Cambia a rosa al pasar el mouse */
+        }
+
+        /* 7. TARJETAS DE PRODUCTOS (ESTILO BOUTIQUE) */
         .grid-productos {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px 20px;
         }
 
         .card {
-            background: white;
-            border-radius: 20px;
-            padding: 30px 20px;
-            text-align: center;
-            box-shadow: 0 5px 25px rgba(255, 182, 193, 0.3);
-            transition: transform 0.4s, box-shadow 0.4s;
-            border: 2px solid #ffe4ec;
+            background: #ffffff;
+            text-align: left;
+            border: none;
+            transition: transform 0.3s;
         }
 
         .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.35);
+            transform: translateY(-5px);
         }
 
         .card-emoji {
             width: 100%;
-            aspect-ratio: 1 / 1;         /* 👈 Contenedor cuadrado perfecto */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 15px;
+            height: 350px;
             overflow: hidden;
-            border-radius: 12px;
-            background-color: #fff0f5;   /* Fondo rosita por si hay bordes */
+            background-color: #fcf5f7; /* Fondo rosa muy pálido por si la imagen no llena */
         }
-        
+
         .card-emoji img {
             width: 100%;
             height: 100%;
-            object-fit: cover;           /* 👈 Llena el cuadrado recortando lo justo */
-            transition: transform 0.4s;
-        }
-        
-        .card:hover .card-emoji img {
-            transform: scale(1.08);
+            object-fit: cover;
+            transition: transform 0.6s ease;
         }
 
         .card:hover .card-emoji img {
-            transform: scale(1.08);
+            transform: scale(1.05);
         }
 
         .card h3 {
-            color: #8b3a62;
-            font-size: 22px;
-            margin-bottom: 10px;
+            font-size: 20px;
+            margin: 15px 0 5px 0;
+            color: #3d1c2b;
         }
 
         .card p {
             color: #7a5a6a;
-            font-size: 15px;
+            font-size: 14px;
             margin-bottom: 15px;
+            line-height: 1.4;
         }
 
         .precio {
             display: block;
-            font-size: 24px;
-            color: #ff69b4;
-            font-weight: bold;
-            margin-bottom: 20px;
+            font-size: 18px;
+            color: #d15878; /* Rosa fuerte para resaltar el precio */
+            font-weight: 600;
+            margin-bottom: 15px;
         }
 
+        /* Botón de comprar en Borgoña, muy elegante */
         .btn-comprar {
-            display: inline-block;
-            background-color: #fff0f5;
-            color: #8b3a62;
-            padding: 10px 30px;
-            border-radius: 25px;
+            display: block;
+            width: 100%;
+            background-color: #3d1c2b; 
+            color: #ffffff;
+            padding: 15px;
+            text-align: center;
             text-decoration: none;
-            font-weight: bold;
-            border: 2px solid #ffb6c1;
-            transition: all 0.3s;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
         }
 
         .btn-comprar:hover {
-            background-color: #ff69b4;
-            color: white;
-            border-color: #ff69b4;
+            background-color: #d15878; /* Al pasar el mouse, se vuelve rosa */
         }
 
-        /* NOSOTROS */
+        /* 8. NOSOTROS Y CONTACTO */
         .nosotros {
-            background: linear-gradient(135deg, #ffe4ec, #fff0f5);
-            padding: 80px 60px;
+            background: #fcf5f7; /* Fondo rosa pálido */
+            padding: 80px 20px;
             text-align: center;
         }
 
         .nosotros p {
             max-width: 800px;
             margin: 0 auto;
-            font-size: 18px;
-            color: #6b4a5a;
+            font-size: 16px;
+            color: #555;
         }
 
-        /* CONTACTO */
         .contacto {
-            padding: 80px 60px;
+            padding: 80px 20px;
             text-align: center;
         }
 
@@ -262,207 +306,128 @@
         .contacto-item {
             background: white;
             padding: 30px;
-            border-radius: 20px;
             min-width: 220px;
-            box-shadow: 0 5px 25px rgba(255, 182, 193, 0.3);
-            border: 2px solid #ffe4ec;
+            border: 1px solid #f0e6e9; /* Borde sutil rosado */
         }
 
         .contacto-item .icon {
-            font-size: 45px;
+            font-size: 35px;
             margin-bottom: 10px;
         }
 
         .contacto-item h4 {
-            color: #8b3a62;
+            color: #3d1c2b;
             margin-bottom: 8px;
-            font-size: 18px;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .contacto-item p {
-            color: #7a5a6a;
-            font-size: 15px;
+            color: #666;
+            font-size: 14px;
         }
 
-        /* FOOTER */
+        /* 9. FOOTER */
         footer {
-            background: linear-gradient(135deg, #8b3a62, #a94e77);
-            color: #ffe4ec;
+            background: #3d1c2b; /* Fondo Borgoña */
+            color: #fff;
             text-align: center;
-            padding: 30px 20px;
-            font-size: 15px;
+            padding: 40px 20px;
+            font-size: 12px;
+            letter-spacing: 1px;
         }
 
-        footer p {
-            margin-bottom: 5px;
-        }
-
-        /* RESPONSIVE */
+        /* 10. RESPONSIVE */
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 15px;
-                padding: 20px;
-            }
-
-            nav ul {
-                gap: 20px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .hero {
-                flex-direction: column;
-                padding: 50px 25px;
-                text-align: center;
-            }
-
-            .hero-text h1 {
-                font-size: 36px;
-            }
-
-            .hero-image {
-                font-size: 150px;
-            }
-
-            .productos, .nosotros, .contacto {
-                padding: 50px 25px;
-            }
-
-            .section-title {
-                font-size: 30px;
-            }
-
-            /* Estilos para los botones de opciones */
-        .opciones-flores {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 40px;
-            margin-top: 20px;
-        }
-        
-        .btn-opcion {
-            background-color: #fff;
-            color: #8b3a62;
-            padding: 12px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-size: 17px;
-            font-weight: bold;
-            border: 2px solid #ffb6c1;
-            box-shadow: 0 4px 10px rgba(255, 182, 193, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .btn-opcion:hover {
-            background-color: #ff69b4;
-            color: white;
-            border-color: #ff69b4;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(255, 105, 180, 0.5);
-        }
-                    a[href="#tejidos"]:hover, a[href="#cintas"]:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 10px 25px rgba(255, 105, 180, 0.6) !important;
-        }
-        /* 2. Evita que el menú de arriba tape el título de la sección al bajar */
-        section {
-            scroll-margin-top: 80px; /* Ajusta este número si tu menú es más alto */
-        }
-        
-        /* 3. El diseño de los botones unificados */
-        .btn-bonito {
-            display: inline-block;
-            background: linear-gradient(135deg, #ff69b4, #ff85c0);
-            color: white;
-            padding: 15px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
-            transition: all 0.3s ease;
-            border: 2px solid #ff69b4;
-        }
-        
-        /* 4. Efecto cuando pasas el mouse por encima */
-        .btn-bonito:hover {
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 10px 25px rgba(255, 105, 180, 0.6);
-            background: linear-gradient(135deg, #ff85c0, #ff69b4);
-        }
-            /* 1. Hace que el desplazamiento sea suave y moderno */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* 2. Evita que el menú de arriba tape el título de la sección al bajar */
-        section {
-            scroll-margin-top: 80px; 
+            .top-bar { padding: 15px; flex-direction: column; gap: 15px; }
+            .nav-menu { flex-wrap: wrap; gap: 15px; padding: 15px; }
+            .card-emoji { height: 280px; }
+            .categoria-card img { height: 250px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ENCABEZADO -->
-    <header>
-        <div class="logo">🌸 Eterna <span>Rosa</span></div>
+    <!-- HEADER -->
+    <header style="width: 100%; border-bottom: 1px solid #f0e6e9;">
+        <div class="top-bar">
+            <div style="font-size: 20px; cursor: pointer; color: #3d1c2b;">🔍</div>
+            <a href="#" class="logo">ETERNA ROSA</a>
+            <div style="display: flex; gap: 20px; font-size: 20px; color: #3d1c2b;">
+                <span style="cursor: pointer;">👤</span>
+                <span style="cursor: pointer;">🛒</span>
+            </div>
+        </div>
+
         <nav>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#productos">Productos</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+            <ul class="nav-menu">
+                <li><a href="#inicio" class="btn-envio-hoy">ENVÍOS PARA HOY</a></li>
+                <li><a href="#seccion-tejidos">FLORES LIMPIAPIPA</a></li>
+                <li><a href="#seccion-cintas">FLORES DE CINTAS</a></li>
+                <li><a href="#nosotros">NOSOTROS</a></li>
+                <li><a href="#contacto">CONTACTO</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- BARRA SUPERIOR -->
+    <div class="barra-negra">
+        DELIVERY A TODO EL PAÍS | <a href="#">Ver tarifario de delivery</a>
+    </div>
+
     <!-- HERO -->
-    <section class="hero" id="inicio">
-        <div class="hero-text">
-            <h1>Ramos que te gustaran </h1>
-            <p>Descubre nuestra colección de ramos y macetasxd.</p>
-            <a href="#productos" class="btn">Explorar Catálogo</a>
+    <section id="inicio" style="background-image: url('portada.jpeg'); background-size: cover; background-position: center; height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative;">
+        <!-- Capa oscura para que resalte el texto -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(61, 28, 43, 0.4);"></div>
+        <div style="position: relative; z-index: 1; color: white;">
+            <h1 style="font-size: 60px; letter-spacing: 3px; margin-bottom: 10px; font-weight: 400; text-transform: uppercase;">ENVÍOS PARA HOY</h1>
+            <p style="font-size: 18px; margin-bottom: 30px; font-family: 'Montserrat', sans-serif;">Compra hasta las 6pm</p>
+            <a href="#seccion-tejidos" style="background: #d15878; color: white; padding: 15px 40px; text-decoration: none; font-size: 13px; letter-spacing: 2px; font-weight: 600; transition: 0.3s;">VER COLECCIÓN</a>
         </div>
-        <div class="hero-image">💐</div>
     </section>
 
-    <!-- PRODUCTOS -->
-    <!-- SECCIÓN DE PRESENTACIÓN CON BOTONES -->
+    <!-- CATEGORÍAS -->
+    <section class="categorias-container">
+        <h2 style="text-align: center; font-size: 28px; letter-spacing: 2px; margin-bottom: 50px; text-transform: uppercase; color: #3d1c2b;">Categorías</h2>
+        <div class="grid-categorias">
+            <a href="#seccion-tejidos" class="categoria-card">
+                <img src="cat-tejidos.jpg" alt="Limpiapipa">
+                <div class="categoria-etiqueta">FLORES LIMPIAPIPA</div>
+            </a>
+            <a href="#seccion-cintas" class="categoria-card">
+                <img src="cat-cintas.jpg" alt="Cintas">
+                <div class="categoria-etiqueta">FLORES DE CINTAS</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- INTRO Y BOTONES DE FILTRO -->
     <section class="productos" style="padding-bottom: 0;">
         <h2 class="section-title">Nuestras Flores</h2>
         <p class="section-subtitle">Para realizar tu pedido, solicita tu reserva con el 50% de anticipo. El 50% restante se cancela al recibir tus flores. Así garantizamos frescura, puntualidad y dedicación en cada arreglo. 🌺</p>
                 
-    <div style="text-align: center; margin: 30px 0 50px 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-        <a href="#seccion-tejidos" style="display: inline-block; background: linear-gradient(135deg, #ff69b4, #ff85c0); color: white !important; padding: 15px 35px; border-radius: 50px; text-decoration: none !important; font-size: 18px; font-weight: bold; box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4); transition: all 0.3s ease; border: 2px solid #ff69b4;">
-            🧶 Ver Flores de Limpiapipa
-        </a>
-        <a href="#seccion-cintas" style="display: inline-block; background: linear-gradient(135deg, #ff69b4, #ff85c0); color: white !important; padding: 15px 35px; border-radius: 50px; text-decoration: none !important; font-size: 18px; font-weight: bold; box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4); transition: all 0.3s ease; border: 2px solid #ff69b4;">
-            🎀 Ver Flores de Cintas
-        </a>
-    </div>
+        <div class="filtros-container">
+            <a href="#seccion-tejidos" class="btn-bonito">🧶 Ver Flores Limpiapipa</a>
+            <a href="#seccion-cintas" class="btn-bonito">🎀 Ver Flores de Cintas</a>
+        </div>
     </section>
     
-    <!-- SECCIÓN 1: FLORES TEJIDAS -->
-    <section class="productos" id="seccion-tejidos">
-        <h2 class="section-title">Flores Limpiapipa</h2>
+    <!-- SECCIÓN 1: FLORES LIMPIAPIPA -->
+    <section class="productos" id="seccion-tejidos" style="padding-top: 20px;">
+        <h2 class="section-title" style="margin-bottom: 40px;">Flores Limpiapipa</h2>
         
         <div class="grid-productos">
             <div class="card">
-                <div class="card-emoji">
-                    <img src="3tulipanes.jpeg" alt="Dulce Rosa">
-                </div>
+                <div class="card-emoji"><img src="3tulipanes.jpeg" alt="Dulce Rosa"></div>
                 <h3>Dulce Rosa</h3>
                 <p>3 Tulipanes, 1 lírio grande, tarjeta y con su respectiva envoltura.</p>
                 <span class="precio">S/42.00</span>
                 <button onclick="abrirModalYape('Dulce Rosa', '42.00')" class="btn-comprar">Comprar</button>
             </div>
 
-             <div class="card">
-                <div class="card-emoji">
-                    <img src="1girasol.jpeg" alt="Sol de Medianoche">
-                </div>
+            <div class="card">
+                <div class="card-emoji"><img src="1girasol.jpeg" alt="Sol de Medianoche"></div>
                 <h3>Sol de Medianoche</h3>
                 <p>1 Girasol, 3 tulipanes, 10 minimargaritas y con su respectiva envoltura.</p>
                 <span class="precio">S/45.00</span>
@@ -470,19 +435,15 @@
             </div>
 
             <div class="card">
-                <div class="card-emoji">
-                    <img src="6girasoles.jpeg" alt="Girasoles Luminosos">
-                </div>
+                <div class="card-emoji"><img src="6girasoles.jpeg" alt="Girasoles Luminosos"></div>
                 <h3>Girasoles Luminosos</h3>
-                <p>6 Girasoles grandes de limpiapipas, minimargaritasy con luces LED de compañía.</p>
+                <p>6 Girasoles grandes de limpiapipas, minimargaritas y con luces LED de compañía.</p>
                 <span class="precio">S/65.00</span>
                 <button onclick="abrirModalYape('Girasoles Luminosos', '65.00')" class="btn-comprar">Comprar</button>
             </div>
             
             <div class="card">
-                <div class="card-emoji">
-                    <img src="10tulipanesrojos.jpeg" alt="Amor arácnido">
-                </div>
+                <div class="card-emoji"><img src="10tulipanesrojos.jpeg" alt="Amor arácnido"></div>
                 <h3>Amor arácnido</h3>
                 <p>10 Tulipanes rojos en limpiapipas, incluye tarjeta.</p>
                 <span class="precio">S/75.00</span>
@@ -490,9 +451,7 @@
             </div>
 
             <div class="card">
-                <div class="card-emoji">
-                    <img src="pelucheFC.jpeg" alt="Ramo Barcelona">
-                </div>
+                <div class="card-emoji"><img src="pelucheFC.jpeg" alt="Ramo Barcelona"></div>
                 <h3>Ramo Barcelona</h3>
                 <p>3 Lírios, 4 tulipanes, luces LED, mariposas doradas e incluye un peluche FC Barcelona.</p>
                 <span class="precio">S/80.00</span>
@@ -500,9 +459,7 @@
             </div>
 
             <div class="card">
-                <div class="card-emoji">
-                    <img src="10tulipanesmoradas.jpeg" alt="Encanto de lavanda">
-                </div>
+                <div class="card-emoji"><img src="10tulipanesmoradas.jpeg" alt="Encanto de lavanda"></div>
                 <h3>Encanto de lavanda</h3>
                 <p>10 Tulipanes, follaje, mariposas doradas, incluye luces LED.</p>
                 <span class="precio">S/80.00</span>
@@ -510,9 +467,7 @@
             </div>
             
             <div class="card">
-                <div class="card-emoji">
-                    <img src="3lirios.jpeg" alt="Encanto rosado">
-                </div>
+                <div class="card-emoji"><img src="3lirios.jpeg" alt="Encanto rosado"></div>
                 <h3>Encanto rosado</h3>
                 <p>3 Lírios rosados grandes, 7 tulipanes e incluye luces LED.</p>
                 <span class="precio">S/80.00</span>
@@ -520,9 +475,7 @@
             </div>
 
             <div class="card">
-                <div class="card-emoji">
-                    <img src="3girasoles.jpeg" alt="Destello de girasoles">
-                </div>
+                <div class="card-emoji"><img src="3girasoles.jpeg" alt="Destello de girasoles"></div>
                 <h3>Destello de girasoles</h3>
                 <p>3 Girasoles, 7 tulipanes amarilos y 6 minimargaritas.</p>
                 <span class="precio">S/85.00</span>
@@ -530,81 +483,45 @@
             </div>
                 
             <div class="card">
-                <div class="card-emoji">
-                    <img src="12tulipanesrosados.jpeg" alt="Susurro de amor">
-                </div>
+                <div class="card-emoji"><img src="12tulipanesrosados.jpeg" alt="Susurro de amor"></div>
                 <h3>Susurro de amor</h3>
                 <p>12 Hermosos tulipanes rosados con su envoltura cute.</p>
                 <span class="precio">S/90.00</span>
                 <button onclick="abrirModalYape('Susurro de amor', '90.00')" class="btn-comprar">Comprar</button>
             </div>
-<!-- AQUÍ VAN TUS TARJETAS DE FLORES TEJIDAS -->
-            <!-- (Tus <div class="card">...</div> actuales) -->
         </div>
-</section>
+    </section>
 
-<!-- SECCIÓN 2: FLORES DE CINTAS -->
-<section class="productos" id="seccion-cintas" style="background-color: #fff0f5;">
-    <h2 class="section-title">Flores de Cintas</h2>
-    
-    <div class="grid-productos">
+    <!-- SECCIÓN 2: FLORES DE CINTAS -->
+    <section class="productos" id="seccion-cintas" style="background-color: #fcf5f7;">
+        <h2 class="section-title" style="margin-bottom: 40px;">Flores de Cintas</h2>
         
-        <div class="card">
-            <div class="card-emoji">
-                <img src="especial.jpeg" alt="Especial Cumpleaños">
-            </div> <!-- Cierra card-emoji -->
-            <h3>Especial Cumpleaños</h3>
-            <p>9 rosas, 3 mariposas doradas, cinta personalizada "HAPPY BIRTHDAY", perlas doradas en cada rosa y con su respectiva envoltura.</p>
-            <span class="precio">S/50.00</span>
-            <button onclick="abrirModalYape('Especial Cumpleaños', '50.00')" class="btn-comprar">Comprar</button>
-        </div> <!-- Cierra card -->
-            <div class="card">
-                <div class="card-emoji">
-                    <img src="tiernoromance.jpeg" alt="Tierno Romance">
-                </div>
+        <div class="grid-productos">
+            <div class="card" style="background-color: transparent;">
+                <div class="card-emoji"><img src="especial.jpeg" alt="Especial Cumpleaños"></div>
+                <h3>Especial Cumpleaños</h3>
+                <p>9 rosas, 3 mariposas doradas, cinta personalizada "HAPPY BIRTHDAY", perlas doradas en cada rosa y con su respectiva envoltura.</p>
+                <span class="precio">S/50.00</span>
+                <button onclick="abrirModalYape('Especial Cumpleaños', '50.00')" class="btn-comprar">Comprar</button>
+            </div>
+
+            <div class="card" style="background-color: transparent;">
+                <div class="card-emoji"><img src="tiernoromance.jpeg" alt="Tierno Romance"></div>
                 <h3>Tierno Romance</h3>
-                <p>•Peluche de Angela pequeño, 2 deliciosos chocolates, rosas eternas y 2 mariposas doradas.</p>
+                <p>Peluche de Angela pequeño, 2 deliciosos chocolates, rosas eternas y 2 mariposas doradas.</p>
                 <span class="precio">S/70.00</span>
                 <button onclick="abrirModalYape('Tierno Romance', '70.00')" class="btn-comprar">Comprar</button>
             </div> 
-                    <div class="card">
-                <div class="card-emoji">
-                    <img src="peticionreal.jpeg" alt="Petición Real">
-                </div>
+            
+            <div class="card" style="background-color: transparent;">
+                <div class="card-emoji"><img src="peticionreal.jpeg" alt="Petición Real"></div>
                 <h3>Petición Real</h3>
                 <p>30 Rosas eternas, Perlas doradas en cada rosa, Corona, luces LED, 3 mariposas doradas y Cinta personalizada “Puedo ser tu novio”.</p>
                 <span class="precio">S/90.00</span>
                 <button onclick="abrirModalYape('Petición Real', '90.00')" class="btn-comprar">Comprar</button>
             </div>  
-                    <div class="card">
-                <div class="card-emoji">
-                    <img src=".jpeg" alt="Girasoles Luminosos">
-                </div>
-                <h3>.</h3>
-                <p>caracteristicas.</p>
-                <span class="precio">S/65.00</span>
-                <button onclick="abrirModalYape('Girasoles Luminosos', '65.00')" class="btn-comprar">Comprar</button>
-            </div>  
-                    <div class="card">
-                <div class="card-emoji">
-                    <img src=".jpeg" alt="Girasoles Luminosos">
-                </div>
-                <h3>.</h3>
-                <p>caracteristicas.</p>
-                <span class="precio">S/65.00</span>
-                <button onclick="abrirModalYape('Girasoles Luminosos', '65.00')" class="btn-comprar">Comprar</button>
-            </div>  
-                    <div class="card">
-                <div class="card-emoji">
-                    <img src=".jpeg" alt="Girasoles Luminosos">
-                </div>
-                <h3>.</h3>
-                <p>caracteristicas.</p>
-                <span class="precio">S/65.00</span>
-                <button onclick="abrirModalYape('Girasoles Luminosos', '65.00')" class="btn-comprar">Comprar</button>
-            </div>  
-    </div> <!-- Cierra grid-productos -->
-</section> <!-- Cierra la sección de cintas -->
+        </div> 
+    </section>
 
     <!-- NOSOTROS -->
     <section class="nosotros" id="nosotros">
@@ -622,7 +539,6 @@
                 <div class="icon">🇵🇪</div>
                 <p>LIMA<br>PERÚ</p>
             </div>
-
             <div class="contacto-item">
                 <div class="icon">📞</div>
                 <h4>Teléfono</h4>
@@ -633,107 +549,95 @@
 
     <!-- FOOTER -->
     <footer>
-        <p>🌸 © 2026</p>
-        <p>Hecho con amor para regalar flores 🌷</p>
+        <p>🌸 ETERNA ROSA © 2026</p>
+        <p style="margin-top: 10px; opacity: 0.7;">Hecho con amor para regalar flores 🌷</p>
     </footer>
     
     <!-- ===== MODAL DE PAGO CON YAPE ===== -->
-<div id="modal-yape" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:9999; justify-content:center; align-items:center;">
-    <div style="background:white; padding:30px; border-radius:20px; text-align:center; max-width:420px; width:90%; max-height:90vh; overflow-y:auto; position:relative;">
-        
-        <span onclick="cerrarModalYape()" style="position:absolute; top:15px; right:20px; font-size:28px; cursor:pointer; color:#8b3a62;">&times;</span>
-        
-        <h2 style="color:#8b3a62; margin-bottom:10px;">Paga con Yape</h2>
-        <p style="margin-bottom:15px; color:#6b4a5a;">Estás comprando: <strong id="yape-producto">Producto</strong></p>
-        <p style="font-size:22px; color:#ff69b4; font-weight:bold; margin-bottom:20px;">Total: <span id="yape-precio">$0.00</span></p>
+    <div id="modal-yape" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(61, 28, 43, 0.8); z-index:9999; justify-content:center; align-items:center;">
+        <div style="background:white; padding:30px; border-radius:10px; text-align:center; max-width:420px; width:90%; max-height:90vh; overflow-y:auto; position:relative;">
+            
+            <span onclick="cerrarModalYape()" style="position:absolute; top:15px; right:20px; font-size:28px; cursor:pointer; color:#3d1c2b;">&times;</span>
+            
+            <h2 style="color:#3d1c2b; margin-bottom:10px; font-size: 24px;">Paga con Yape</h2>
+            <p style="margin-bottom:15px; color:#666;">Estás comprando: <strong id="yape-producto" style="color:#3d1c2b;">Producto</strong></p>
+            <p style="font-size:22px; color:#d15878; font-weight:bold; margin-bottom:20px;">Total: <span id="yape-precio">S/0.00</span></p>
 
-        <!-- 👇 AQUÍ VA TU CÓDIGO QR -->
-        <img src="qr-yape.jpeg" alt="QR de Yape" style="width:220px; height:220px; margin-bottom:15px; border:3px solid #ffb6c1; border-radius:15px; padding:5px;">
-        
-        <p style="font-size:14px; color:#666; margin-bottom:5px;">O yapea al número:</p>
-        <h3 style="color:#8b3a62; margin-bottom:20px;">+51 983 387 958</h3>
+            <img src="qr-yape.jpeg" alt="QR de Yape" style="width:220px; height:220px; margin-bottom:15px; border:1px solid #f0e6e9; padding:5px;">
+            
+            <p style="font-size:14px; color:#666; margin-bottom:5px;">O yapea al número:</p>
+            <h3 style="color:#3d1c2b; margin-bottom:20px;">+51 983 387 958</h3>
 
-        <hr style="border:1px solid #ffe4ec; margin-bottom:20px;">
-        
-        <p style="font-size:15px; font-weight:bold; color:#8b3a62; margin-bottom:10px;">1. Realiza el pago</p>
-        <p style="font-size:15px; font-weight:bold; color:#8b3a62; margin-bottom:10px;">2. Sube tu captura de pantalla</p>
+            <hr style="border:1px solid #f0e6e9; margin-bottom:20px;">
+            
+            <p style="font-size:15px; font-weight:bold; color:#3d1c2b; margin-bottom:10px;">1. Realiza el pago</p>
+            <p style="font-size:15px; font-weight:bold; color:#3d1c2b; margin-bottom:10px;">2. Sube tu captura de pantalla</p>
 
-        <!-- 👇 INPUT PARA SUBIR LA CAPTURA -->
-        <input type="file" id="file-upload" accept="image/*" onchange="previewImage(event)" style="margin-bottom:15px; font-size:14px;">
-        
-        <!-- Vista previa de la imagen subida -->
-        <div id="preview-container" style="display:none; margin-bottom:15px;">
-            <img id="image-preview" src="#" alt="Vista previa" style="max-width:100%; max-height:150px; border-radius:10px; border:2px solid #ffb6c1;">
+            <input type="file" id="file-upload" accept="image/*" onchange="previewImage(event)" style="margin-bottom:15px; font-size:14px; width: 100%;">
+            
+            <div id="preview-container" style="display:none; margin-bottom:15px;">
+                <img id="image-preview" src="#" alt="Vista previa" style="max-width:100%; max-height:150px; border-radius:5px; border:1px solid #f0e6e9;">
+            </div>
+
+            <p style="font-size:13px; color:#888; margin-bottom:20px;">Paso 3: Confirma tu pedido por WhatsApp y envíanos la captura.</p>
+
+            <button onclick="enviarWhatsAppYape()" style="width:100%; padding:15px; background:#3d1c2b; color:white; border:none; border-radius:5px; font-size:14px; font-weight:bold; cursor:pointer; transition: 0.3s;">
+                📲 CONFIRMAR POR WHATSAPP
+            </button>
         </div>
-
-        <p style="font-size:13px; color:#888; margin-bottom:20px;">Paso 3: Confirma tu pedido por WhatsApp y envíanos la captura.</p>
-
-        <button onclick="enviarWhatsAppYape()" style="width:100%; padding:15px; background:linear-gradient(135deg, #ff69b4, #ff85c0); color:white; border:none; border-radius:25px; font-size:16px; font-weight:bold; cursor:pointer; box-shadow:0 4px 15px rgba(255,105,180,0.4);">
-            📲 Confirmar por WhatsApp
-        </button>
     </div>
-</div>
 
-<!-- ===== SCRIPT DE FUNCIONAMIENTO ===== -->
-<script>
-    let productoActual = "";
-    let precioActual = "";
+    <!-- ===== SCRIPTS ===== -->
+    <script>
+        let productoActual = "";
+        let precioActual = "";
 
-    // Función para abrir el modal (se llama desde los botones de comprar)
-    function abrirModalYape(producto, precio) {
-        productoActual = producto;
-        precioActual = precio;
-        document.getElementById('yape-producto').innerText = producto;
-        document.getElementById('yape-precio').innerText = "$" + precio;
-        document.getElementById('modal-yape').style.display = 'flex';
-        // Limpiar la imagen previa si la había
-        document.getElementById('file-upload').value = '';
-        document.getElementById('preview-container').style.display = 'none';
-    }
-
-    // Función para cerrar el modal
-    function cerrarModalYape() {
-        document.getElementById('modal-yape').style.display = 'none';
-    }
-
-    // Función para mostrar la vista previa de la imagen
-    function previewImage(event) {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const preview = document.getElementById('image-preview');
-                preview.src = e.target.result;
-                document.getElementById('preview-container').style.display = 'block';
-            }
-            reader.readAsDataURL(file);
+        function abrirModalYape(producto, precio) {
+            productoActual = producto;
+            precioActual = precio;
+            document.getElementById('yape-producto').innerText = producto;
+            document.getElementById('yape-precio').innerText = "S/" + precio;
+            document.getElementById('modal-yape').style.display = 'flex';
+            document.getElementById('file-upload').value = '';
+            document.getElementById('preview-container').style.display = 'none';
         }
-    }
 
-    // Función para enviar por WhatsApp
-    function enviarWhatsAppYape() {
-        const numeroWhatsApp = "51983387958"; // 👈 CAMBIA ESTO POR TU NÚMERO REAL
-        const mensaje = `Hola, quiero comprar el *${productoActual}* por un total de *$${precioActual}*. Ya realicé el pago con Yape. A continuación adjunto mi captura de pantalla.`;
-        const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-        window.open(url, '_blank');
-    }
-</script>
-        <script>
-        // Desplazamiento suave y moderno
+        function cerrarModalYape() {
+            document.getElementById('modal-yape').style.display = 'none';
+        }
+
+        function previewImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('image-preview');
+                    preview.src = e.target.result;
+                    document.getElementById('preview-container').style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function enviarWhatsAppYape() {
+            const numeroWhatsApp = "51983387958"; // Tu número real
+            const mensaje = `Hola, quiero comprar el *${productoActual}* por un total de *S/${precioActual}*. Ya realicé el pago con Yape. A continuación adjunto mi captura de pantalla.`;
+            const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank');
+        }
+
+        // Desplazamiento suave
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault(); // Evita el salto brusco por defecto
-                
+                e.preventDefault(); 
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 
                 if (targetElement) {
-                    // Calculamos la posición exacta restando el espacio del menú (80px)
-                    const headerOffset = 80; 
+                    const headerOffset = 100; 
                     const elementPosition = targetElement.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                     
-                    // Hacemos el desplazamiento suave
                     window.scrollTo({
                         top: offsetPosition,
                         behavior: 'smooth'

@@ -728,7 +728,7 @@
         <p style="margin-top: 10px; opacity: 0.7;">Hecho con amor para regalar flores 🌷</p>
     </footer>
     
-       <!-- ===== MODAL DE PAGO CON YAPE ===== -->
+          <!-- ===== MODAL DE PAGO CON YAPE ===== -->
     <div id="modal-yape" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(107, 45, 70, 0.8); z-index:9999; justify-content:center; align-items:center;">
         <div style="background:white; padding:30px 25px; border-radius:20px; text-align:center; max-width:420px; width:90%; max-height:90vh; overflow-y:auto; position:relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
             
@@ -739,7 +739,7 @@
             <p style="margin-bottom:20px; color:#666; font-size:15px;">Estás comprando: <br><strong id="yape-producto" style="color:#6b2d46; font-size:18px;">Producto</strong></p>
             
             <!-- Recuadro de Precios -->
-            <div style="background-color: #fffafb; border-radius: 12px; padding: 15px; margin-bottom: 20px; border: 1px dashed #ffb6c1;">
+            <div style="background-color: #fffafb; border-radius: 12px; padding: 15px; margin-bottom: 15px; border: 1px dashed #ffb6c1;">
                 <p style="font-size:15px; color:#999; text-decoration:line-through; margin-bottom:5px;">
                     Total del producto: <span id="yape-precio-original">S/0.00</span>
                 </p>
@@ -747,6 +747,11 @@
                     Reserva (20%): <br><span id="yape-precio-reserva" style="font-size:28px;">S/0.00</span>
                 </p>
             </div>
+
+            <!-- Mensajito del saldo restante -->
+            <p style="font-size: 13px; color: #777; font-style: italic; margin-bottom: 20px; background: #fdfafb; padding: 8px; border-radius: 8px;">
+                * El 80% restante lo cancelas cuando se te entregue el ramo. 💐
+            </p>
 
             <!-- Código QR -->
             <img src="qr-yape.jpeg" alt="QR de Yape" style="width:200px; height:200px; margin-bottom:15px; border:2px solid #ffeef2; border-radius:15px; padding:5px;">
@@ -782,82 +787,82 @@
         </div>
     </div>
 
-   <!-- ===== SCRIPTS ===== -->
-<script>
-    let productoActual = "";
-    let precioActual = "";
+    <!-- ===== SCRIPTS ===== -->
+    <script>
+        let productoActual = "";
+        let precioActual = "";
 
-    function abrirModalYape(producto, precio) {
-        productoActual = producto;
-        precioActual = precio;
-        
-        // Actualizamos el nombre del producto
-        document.getElementById('yape-producto').innerText = producto;
-        
-        // Calculamos los precios
-        const precioNum = parseFloat(precio);
-        const precioReserva = (precioNum * 0.20).toFixed(2); // Calcula el 20%
-
-        // Mostramos los precios en el modal (el original tachado y la reserva)
-        document.getElementById('yape-precio-original').innerText = "S/" + precioNum.toFixed(2);
-        document.getElementById('yape-precio-reserva').innerText = "S/" + precioReserva;
-
-        // Mostramos el modal y limpiamos el formulario
-        document.getElementById('modal-yape').style.display = 'flex';
-        document.getElementById('file-upload').value = '';
-        document.getElementById('preview-container').style.display = 'none';
-    }
-
-    function cerrarModalYape() {
-        document.getElementById('modal-yape').style.display = 'none';
-    }
-
-    function previewImage(event) {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const preview = document.getElementById('image-preview');
-                preview.src = e.target.result;
-                document.getElementById('preview-container').style.display = 'block';
-            }
-            reader.readAsDataURL(file);
-        }
-    }
-
-    function enviarWhatsAppYape() {
-        const numeroWhatsApp = "51983387958"; // 👈 TU NÚMERO REAL AQUÍ
-        
-        // Calculamos el 20% de nuevo para el mensaje
-        const precioNum = parseFloat(precioActual);
-        const precioReserva = (precioNum * 0.20).toFixed(2);
-
-        // Armamos el mensaje de WhatsApp con saltos de línea (\n)
-        const mensaje = `Hola, quiero reservar el *${productoActual}*.\n\nTotal: S/${precioNum.toFixed(2)}\nReserva (20%): *S/${precioReserva}*\n\nYa realicé el pago de la reserva con Yape. A continuación adjunto mi captura de pantalla.`;
-        
-        const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-        window.open(url, '_blank');
-    }
-
-    // Desplazamiento suave para los botones de anclaje
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault(); 
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
+        function abrirModalYape(producto, precio) {
+            productoActual = producto;
+            precioActual = precio;
             
-            if (targetElement) {
-                const headerOffset = 100; // Ajusta si el menú superior es más alto
-                const elementPosition = targetElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
+            // Actualizamos el nombre del producto en el modal
+            document.getElementById('yape-producto').innerText = producto;
+            
+            // Calculamos el precio original y el 20% de reserva
+            const precioNum = parseFloat(precio);
+            const precioReserva = (precioNum * 0.20).toFixed(2); 
+
+            // Mostramos los precios en el modal
+            document.getElementById('yape-precio-original').innerText = "S/" + precioNum.toFixed(2);
+            document.getElementById('yape-precio-reserva').innerText = "S/" + precioReserva;
+
+            // Mostramos el modal y limpiamos el formulario
+            document.getElementById('modal-yape').style.display = 'flex';
+            document.getElementById('file-upload').value = '';
+            document.getElementById('preview-container').style.display = 'none';
+        }
+
+        function cerrarModalYape() {
+            document.getElementById('modal-yape').style.display = 'none';
+        }
+
+        function previewImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('image-preview');
+                    preview.src = e.target.result;
+                    document.getElementById('preview-container').style.display = 'block';
+                }
+                reader.readAsDataURL(file);
             }
+        }
+
+        function enviarWhatsAppYape() {
+            const numeroWhatsApp = "51983387958"; // 👈 TU NÚMERO REAL AQUÍ
+            
+            // Calculamos el 20% de nuevo para el mensaje de WhatsApp
+            const precioNum = parseFloat(precioActual);
+            const precioReserva = (precioNum * 0.20).toFixed(2);
+
+            // Armamos el mensaje de WhatsApp (Se agregó la nota del saldo restante)
+            const mensaje = `Hola, quiero reservar el *${productoActual}*.\n\nTotal: S/${precioNum.toFixed(2)}\nReserva (20%): *S/${precioReserva}*\n*(El saldo restante lo pagaré al recibir el ramo)*\n\nYa realicé el pago de la reserva con Yape. A continuación adjunto mi captura de pantalla.`;
+            
+            const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank');
+        }
+
+        // Desplazamiento suave para los botones de anclaje
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault(); 
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    const headerOffset = 100; // Ajusta si el menú superior es más alto
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
         });
-    });
-</script>
+    </script>
 </body>
 </html>

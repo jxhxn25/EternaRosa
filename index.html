@@ -728,98 +728,136 @@
         <p style="margin-top: 10px; opacity: 0.7;">Hecho con amor para regalar flores 🌷</p>
     </footer>
     
-    <!-- ===== MODAL DE PAGO CON YAPE ===== -->
+       <!-- ===== MODAL DE PAGO CON YAPE ===== -->
     <div id="modal-yape" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(107, 45, 70, 0.8); z-index:9999; justify-content:center; align-items:center;">
-        <div style="background:white; padding:30px; border-radius:20px; text-align:center; max-width:420px; width:90%; max-height:90vh; overflow-y:auto; position:relative;">
+        <div style="background:white; padding:30px 25px; border-radius:20px; text-align:center; max-width:420px; width:90%; max-height:90vh; overflow-y:auto; position:relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
             
-            <span onclick="cerrarModalYape()" style="position:absolute; top:15px; right:20px; font-size:28px; cursor:pointer; color:#6b2d46;">&times;</span>
+            <!-- Botón de cerrar -->
+            <span onclick="cerrarModalYape()" style="position:absolute; top:15px; right:20px; font-size:28px; cursor:pointer; color:#6b2d46; font-weight:bold;">&times;</span>
             
-            <h2 style="color:#6b2d46; margin-bottom:10px; font-size: 24px;">Paga con Yape</h2>
-            <p style="margin-bottom:15px; color:#666;">Estás comprando: <strong id="yape-producto" style="color:#6b2d46;">Producto</strong></p>
-            <p style="font-size:22px; color:#ff6b8b; font-weight:bold; margin-bottom:20px;">Total: <span id="yape-precio">S/0.00</span></p>
-
-            <img src="qr-yape.jpeg" alt="QR de Yape" style="width:220px; height:220px; margin-bottom:15px; border:2px solid #ffeef2; border-radius:15px; padding:5px;">
+            <h2 style="color:#6b2d46; margin-bottom:5px; font-size: 26px; font-family: 'Playfair Display', serif;">Paga con Yape</h2>
+            <p style="margin-bottom:20px; color:#666; font-size:15px;">Estás comprando: <br><strong id="yape-producto" style="color:#6b2d46; font-size:18px;">Producto</strong></p>
             
-            <p style="font-size:14px; color:#666; margin-bottom:5px;">O yapea al número:</p>
-            <h3 style="color:#6b2d46; margin-bottom:20px;">+51 983 387 958</h3>
-
-            <hr style="border:1px solid #ffeef2; margin-bottom:20px;">
-            
-            <p style="font-size:15px; font-weight:bold; color:#6b2d46; margin-bottom:10px;">1. Realiza el pago</p>
-            <p style="font-size:15px; font-weight:bold; color:#6b2d46; margin-bottom:10px;">2. Sube tu captura de pantalla</p>
-
-            <input type="file" id="file-upload" accept="image/*" onchange="previewImage(event)" style="margin-bottom:15px; font-size:14px; width: 100%;">
-            
-            <div id="preview-container" style="display:none; margin-bottom:15px;">
-                <img id="image-preview" src="#" alt="Vista previa" style="max-width:100%; max-height:150px; border-radius:10px; border:1px solid #ffeef2;">
+            <!-- Recuadro de Precios -->
+            <div style="background-color: #fffafb; border-radius: 12px; padding: 15px; margin-bottom: 20px; border: 1px dashed #ffb6c1;">
+                <p style="font-size:15px; color:#999; text-decoration:line-through; margin-bottom:5px;">
+                    Total del producto: <span id="yape-precio-original">S/0.00</span>
+                </p>
+                <p style="font-size:24px; color:#ff6b8b; font-weight:bold; margin:0;">
+                    Reserva (20%): <br><span id="yape-precio-reserva" style="font-size:28px;">S/0.00</span>
+                </p>
             </div>
 
-            <p style="font-size:13px; color:#888; margin-bottom:20px;">Paso 3: Confirma tu pedido por WhatsApp y envíanos la captura.</p>
+            <!-- Código QR -->
+            <img src="qr-yape.jpeg" alt="QR de Yape" style="width:200px; height:200px; margin-bottom:15px; border:2px solid #ffeef2; border-radius:15px; padding:5px;">
+            
+            <p style="font-size:14px; color:#666; margin-bottom:5px;">O yapea al número:</p>
+            <h3 style="color:#6b2d46; margin-bottom:20px; font-size: 20px;">+51 983 387 958</h3>
 
-            <button onclick="enviarWhatsAppYape()" style="width:100%; padding:15px; background:linear-gradient(135deg, #ff9a9e 0%, #ff6b8b 100%); color:white; border:none; border-radius:30px; font-size:14px; font-weight:bold; cursor:pointer; transition: 0.3s; box-shadow: 0 4px 15px rgba(255,107,139,0.4);">
+            <hr style="border:none; border-top:1px solid #ffeef2; margin-bottom:20px;">
+            
+            <!-- Instrucciones -->
+            <div style="text-align: left; margin-bottom: 20px;">
+                <p style="font-size:14px; font-weight:bold; color:#6b2d46; margin-bottom:10px;">Sigue estos pasos:</p>
+                <p style="font-size:13px; color:#555; margin-bottom:8px;">1️⃣ Realiza el pago de la reserva.</p>
+                <p style="font-size:13px; color:#555; margin-bottom:8px;">2️⃣ Sube tu captura de pantalla.</p>
+                <p style="font-size:13px; color:#555;">3️⃣ Confirma por WhatsApp para procesar tu pedido.</p>
+            </div>
+
+            <!-- Caja para subir la foto -->
+            <div style="background: #f5f5f5; border: 1px dashed #ccc; border-radius: 10px; padding: 15px; margin-bottom: 20px;">
+                <label style="font-size: 13px; font-weight: bold; color: #6b2d46; display: block; margin-bottom: 5px; text-align: left;">Sube tu captura de Yape:</label>
+                <input type="file" id="file-upload" accept="image/*" onchange="previewImage(event)" style="width: 100%; font-size: 13px;">
+                
+                <!-- Vista previa de la imagen subida -->
+                <div id="preview-container" style="display:none; margin-top: 10px;">
+                    <img id="image-preview" src="#" alt="Vista previa" style="max-width:100%; max-height:150px; border-radius:10px; border:1px solid #ffeef2;">
+                </div>
+            </div>
+
+            <!-- Botón de WhatsApp -->
+            <button onclick="enviarWhatsAppYape()" style="width:100%; padding:16px; background:linear-gradient(135deg, #ff9a9e 0%, #ff6b8b 100%); color:white; border:none; border-radius:30px; font-size:15px; font-weight:bold; cursor:pointer; transition: 0.3s; box-shadow: 0 4px 15px rgba(255,107,139,0.4); letter-spacing: 1px;">
                 📲 CONFIRMAR POR WHATSAPP
             </button>
         </div>
     </div>
 
-    <!-- ===== SCRIPTS ===== -->
-    <script>
-        let productoActual = "";
-        let precioActual = "";
+   <!-- ===== SCRIPTS ===== -->
+<script>
+    let productoActual = "";
+    let precioActual = "";
 
-        function abrirModalYape(producto, precio) {
-            productoActual = producto;
-            precioActual = precio;
-            document.getElementById('yape-producto').innerText = producto;
-            document.getElementById('yape-precio').innerText = "S/" + precio;
-            document.getElementById('modal-yape').style.display = 'flex';
-            document.getElementById('file-upload').value = '';
-            document.getElementById('preview-container').style.display = 'none';
-        }
+    function abrirModalYape(producto, precio) {
+        productoActual = producto;
+        precioActual = precio;
+        
+        // Actualizamos el nombre del producto
+        document.getElementById('yape-producto').innerText = producto;
+        
+        // Calculamos los precios
+        const precioNum = parseFloat(precio);
+        const precioReserva = (precioNum * 0.20).toFixed(2); // Calcula el 20%
 
-        function cerrarModalYape() {
-            document.getElementById('modal-yape').style.display = 'none';
-        }
+        // Mostramos los precios en el modal (el original tachado y la reserva)
+        document.getElementById('yape-precio-original').innerText = "S/" + precioNum.toFixed(2);
+        document.getElementById('yape-precio-reserva').innerText = "S/" + precioReserva;
 
-        function previewImage(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const preview = document.getElementById('image-preview');
-                    preview.src = e.target.result;
-                    document.getElementById('preview-container').style.display = 'block';
-                }
-                reader.readAsDataURL(file);
+        // Mostramos el modal y limpiamos el formulario
+        document.getElementById('modal-yape').style.display = 'flex';
+        document.getElementById('file-upload').value = '';
+        document.getElementById('preview-container').style.display = 'none';
+    }
+
+    function cerrarModalYape() {
+        document.getElementById('modal-yape').style.display = 'none';
+    }
+
+    function previewImage(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const preview = document.getElementById('image-preview');
+                preview.src = e.target.result;
+                document.getElementById('preview-container').style.display = 'block';
             }
+            reader.readAsDataURL(file);
         }
+    }
 
-        function enviarWhatsAppYape() {
-            const numeroWhatsApp = "51983387958"; // Tu número real
-            const mensaje = `Hola, quiero comprar el *${productoActual}* por un total de *S/${precioActual}*. Ya realicé el pago con Yape. A continuación adjunto mi captura de pantalla.`;
-            const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-            window.open(url, '_blank');
-        }
+    function enviarWhatsAppYape() {
+        const numeroWhatsApp = "51983387958"; // 👈 TU NÚMERO REAL AQUÍ
+        
+        // Calculamos el 20% de nuevo para el mensaje
+        const precioNum = parseFloat(precioActual);
+        const precioReserva = (precioNum * 0.20).toFixed(2);
 
-        // Desplazamiento suave
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault(); 
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
+        // Armamos el mensaje de WhatsApp con saltos de línea (\n)
+        const mensaje = `Hola, quiero reservar el *${productoActual}*.\n\nTotal: S/${precioNum.toFixed(2)}\nReserva (20%): *S/${precioReserva}*\n\nYa realicé el pago de la reserva con Yape. A continuación adjunto mi captura de pantalla.`;
+        
+        const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+        window.open(url, '_blank');
+    }
+
+    // Desplazamiento suave para los botones de anclaje
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault(); 
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                const headerOffset = 100; // Ajusta si el menú superior es más alto
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                 
-                if (targetElement) {
-                    const headerOffset = 100; 
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                    
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
         });
-    </script>
+    });
+</script>
 </body>
 </html>
